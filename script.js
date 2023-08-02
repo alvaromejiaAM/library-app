@@ -1,29 +1,31 @@
-function Book(){
-
+function Book(author, title, pages, read){
+  this.author = author;
+  this.title = title;
+  this.pages = pages;
+  this.read = read;
 }
 
 function addBookToLibrary(){
-
+  const form = document.querySelector('form');
+  form.addEventListener('submit', (e)=> {
+    e.preventDefault();
+    const tempData = new FormData(form);
+    const obj = Object.fromEntries(tempData);
+    myLibrary.push(obj);
+    delete obj;
+    displayLibrary(myLibrary);
+  });
 }
 
 function displayLibrary(library){
-  const displayLibrary = document.querySelector('.library');
-  for(i = 0; i < library.length; i++){
-    const book = document.createElement('div');
-    book.classList = 'book';
-    book.innerText = library[i];
-    displayLibrary.appendChild(book);
-  }
+  
 }
 
-let userLibrary = 
-  ["harry potter", "1984", "The Great Gatsby",
-   "To Kill a Mockingbird", "Wuthering heights", "Catch-22"];
-
-displayLibrary(userLibrary);
+let myLibrary = [];
 
 document.querySelector('#btnAdd').addEventListener('click', ()=>{
   document.getElementById('myForm').style.display = "block";
 });
+
 
 
