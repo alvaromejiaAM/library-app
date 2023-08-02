@@ -16,7 +16,10 @@ function displayLibrary(library){
   }
 }
 
-let userLibrary = ["harry potter", "me", "lorem20"];
+let userLibrary = 
+  ["harry potter", "1984", "The Great Gatsby",
+   "To Kill a Mockingbird", "Wuthering heights", "Catch-22"];
+   
 displayLibrary(userLibrary);
 
 
