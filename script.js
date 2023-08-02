@@ -19,7 +19,11 @@ function displayLibrary(library){
 let userLibrary = 
   ["harry potter", "1984", "The Great Gatsby",
    "To Kill a Mockingbird", "Wuthering heights", "Catch-22"];
-   
+
 displayLibrary(userLibrary);
+
+document.querySelector('#btnAdd').addEventListener('click', ()=>{
+  document.getElementById('myForm').style.display = "block";
+});
 
 
