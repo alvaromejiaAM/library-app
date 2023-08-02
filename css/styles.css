@@ -21,10 +21,31 @@ body{
   background-color: #faf2d3;
 }
 
+#myForm{
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 40%;
+}
+
+#addBook{
+  background-color:  #f6cb1b;
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+  height: 40vh;
+  
+}
+
 .library{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-row: auto;
+  gap: 12px;
+}
+
+.book{
+  background-color: #fff;
 }
 
 footer{
