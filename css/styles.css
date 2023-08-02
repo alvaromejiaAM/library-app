@@ -1,0 +1,38 @@
+#myForm{
+  border: 2px solid black;
+}
+
+body{
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-rows: 200px 1fr 100px;
+}
+
+.header{
+  grid-row: 1/2;
+  background-color: #07560a;
+  color: #fff;
+}
+
+.container{
+  grid-row: 2/3;
+  background-color: #faf2d3;
+}
+
+.library{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-row: auto;
+}
+
+footer{
+  grid-row: 3/4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  background-color: #322b42;
+  color: #fff;
+}
