@@ -6,22 +6,29 @@ function Book(author, title, pages, read){
 }
 
 function addBookToLibrary(){
-  const form = document.querySelector('form');
-  form.addEventListener('submit', (e)=> {
-    e.preventDefault();
     const tempData = new FormData(form);
-    const obj = Object.fromEntries(tempData);
+    const obj =  new Book(tempData.get('author'), tempData.get('title'), tempData.get('pages'), tempData.get('read'));
     myLibrary.push(obj);
-    delete obj;
     displayLibrary(myLibrary);
-  });
 }
 
 function displayLibrary(library){
-  
+  const displayLibrary = document.querySelector('.library');
+    let size = library.length;
+    
+
+    const book = document.createElement('div');
+    book.classList = 'book';
+    displayLibrary.appendChild(book);
 }
 
 let myLibrary = [];
+
+const form = document.getElementById('addBook');
+form.addEventListener('submit', (e)=> {
+  e.preventDefault();
+  addBookToLibrary();
+})
 
 document.querySelector('#btnAdd').addEventListener('click', ()=>{
   document.getElementById('myForm').style.display = "block";
