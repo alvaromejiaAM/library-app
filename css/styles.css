@@ -46,8 +46,13 @@ body{
   gap: 12px;
 }
 
-.book{
+/*book cards when user adds books*/
+.library>div{
   background-color: #fff;
+  border-radius: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 footer{
