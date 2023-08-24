@@ -19,13 +19,26 @@ function displayLibrary(library){
   const displayLibrary = document.querySelector('.library');
     let size = library.length - 1;
     const book = document.createElement('div');
-    book.classList = size; //add to allow removing
+    book.classList = `${library[size].title}`; //add to allow removing
     book.innerText = `${library[size].author}, ${library[size].title}, ${library[size].pages}, ${library[size].read}`;
     const btnRemove = document.createElement('button');
     btnRemove.classList.add("btnRemove");
     btnRemove.innerText = 'X';
     book.appendChild(btnRemove);
     displayLibrary.appendChild(book);
+    remove(library[size].title);
+}
+
+function remove(pos){ //on button click removes from myLibrary and user interface
+  document.querySelectorAll('.library > div > button').forEach(userBook => {
+    userBook.addEventListener('click', (e)=>{
+      e.target.parentNode.remove();
+      const objIndex = myLibrary.findIndex((obj) => obj.title === pos);
+      if(objIndex > -1){
+        myLibrary.splice(objIndex,1);
+      }
+    })
+  })
 }
 
 let myLibrary = [];
@@ -43,3 +56,4 @@ form.addEventListener('submit', (e)=> {
 document.querySelector('#btnAdd').addEventListener('click', ()=>{ 
   document.getElementById('myForm').style.display = "block";
 });
+
