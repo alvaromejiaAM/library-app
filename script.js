@@ -21,11 +21,11 @@ function displayLibrary(library){
 
     const book = document.createElement('div');
     book.classList = `${library[size].title}`; //add to allow removing
-    book.innerText = `Author: ${library[size].author} \nTitle: ${library[size].title} \nPages: ${library[size].pages} \nRead: ${library[size].read}`;
+    book.innerText = `Author: ${library[size].author} \nTitle: ${library[size].title} \nPages: ${library[size].pages}`;
     
     const status = document.createElement('button');
     status.classList.add('btnStatus');
-    status.innerText = 'Change Read Status'
+    status.innerText = `Read: ${library[size].read}`;
 
     const btnRemove = document.createElement('button');
     btnRemove.classList.add("btnRemove");
@@ -35,40 +35,45 @@ function displayLibrary(library){
     book.appendChild(btnRemove);
     displayLibrary.appendChild(book);
 
-    remove(library[size].title);
-    changeRead(library[size].title);
+    remove(library[size]);
+    changeRead(library[size]);
 }
 
 //Change the read status of the book
 function changeRead(pos){
-  document.querySelectorAll('.library > div > .btnStatus').forEach(read =>{
-    read.addEventListener('click', (e)=>{
-      const objIndex = myLibrary.findIndex((obj) => obj.title === pos);
+  let status = document.querySelectorAll('.btnStatus')
+  for(let i = 0; i < status.length; i++){
+    status[i].addEventListener('click', (e)=>{
+      e.stopImmediatePropagation(); //prevents bubbling
+      const objIndex = myLibrary.findIndex((obj) => obj.title === pos.title);
       if(objIndex > -1){
-        const status = myLibrary[objIndex].read;
-        if(status === 'Yes'){
+        if(pos.read === 'Yes'){
+          status[i].innerText = 'Read: No';
           myLibrary[objIndex].read = 'No';
-          displayLibrary(myLibrary[objIndex]);
         }
         else{
+          status[i].innerText = 'Read: Yes';
           myLibrary[objIndex].read = 'Yes';
-          displayLibrary(myLibrary[objIndex]);
         }
       }
-    });
-  });
+    })
+  }
 }
 
-function remove(pos){ //on button click removes from myLibrary and user interface
-  document.querySelectorAll('.library > div > .btnRemove').forEach(userBook => {
-    userBook.addEventListener('click', (e)=>{
-      e.target.parentNode.remove();
-      const objIndex = myLibrary.findIndex((obj) => obj.title === pos);
+//on button click removes from myLibrary and user interface
+function remove(pos){ 
+  let destroy = document.querySelectorAll('.btnRemove');
+  for(let i = 0; i < destroy.length; i++){
+    destroy[i].addEventListener('click', (e)=>{
+      e.stopImmediatePropagation(); //prevents bubbling
+      const objIndex = myLibrary.findIndex((obj) => obj.title === pos.title);
       if(objIndex > -1){
+        e.target.parentNode.remove();
         myLibrary.splice(objIndex,1);
       }
     });
-  });
+  }
+
 }
 
 let myLibrary = [];
