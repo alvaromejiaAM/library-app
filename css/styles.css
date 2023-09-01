@@ -18,23 +18,38 @@ body{
   background-color: #faf2d3;
 }
 
+#btnAdd{
+  color: #fff;
+  background-color: #66e3d2;
+  border-radius: 12px;
+  height: 40px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Popup form */
 #myForm{ 
   display: none;
   position: absolute;
   top: 50%;
   left: 40%;
-  border: 2px solid black;
+  border: 1px solid black;
+  border-radius: 8px;
+  overflow: auto;
+  background-color:  #e05408;
+  color: #fff;
 }
 
 /* the form to add books */
 #addBook{
-  background-color:  #f6cb1b;
   display: flex;
   flex-direction: column;
   width: 40vw;
   height: 40vh;
-  
+  align-items: center;
+  justify-content: space-between;
 }
 
 /* container for book class */
