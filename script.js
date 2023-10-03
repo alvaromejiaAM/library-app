@@ -1,9 +1,11 @@
- //constructor
-function Book(author, title, pages, read){
-  this.author = author;
-  this.title = title;
-  this.pages = pages;
-  this.read = read;
+ //Class
+class Book{
+  constructor(author, title, pages, read){
+    this.author = author;
+    this.title = title;
+    this.pages = pages;
+    this.read = read;
+  }
 }
 
 //stores object into array
